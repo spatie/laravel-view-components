@@ -1,6 +1,6 @@
 {
     "name": "spatie/laravel-view-components",
-    "description": "An better way to connect data with view rendering in Laravel",
+    "description": "A better way to connect data with view rendering in Laravel",
     "keywords": [
         "spatie",
         "laravel-view-components"
