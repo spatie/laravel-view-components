@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-view-components)
 [![Build Status](https://img.shields.io/travis/spatie/laravel-view-components/master.svg?style=flat-square)](https://travis-ci.org/spatie/laravel-view-components)
+[![StyleCI](https://github.styleci.io/repos/134554591/shield?branch=master)](https://github.styleci.io/repos/134554591)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-view-components.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-view-components)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-view-components)
 
