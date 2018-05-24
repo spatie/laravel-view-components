@@ -1,4 +1,4 @@
-# Very short description of the package
+# A better way to connect data with view rendering in Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-view-components)
 [![Build Status](https://img.shields.io/travis/spatie/laravel-view-components/master.svg?style=flat-square)](https://travis-ci.org/spatie/laravel-view-components)
