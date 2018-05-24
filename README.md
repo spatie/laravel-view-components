@@ -96,12 +96,81 @@ You can install the package via composer:
 composer require spatie/laravel-view-components
 ```
 
+No additional setup necessary. Laravel will automatically discover and register the service provider.
+
 ## Usage
 
-``` php
-$skeleton = new Spatie\Skeleton();
-echo $skeleton->echoPhrase('Hello, Spatie!');
+### The `@render` directive
+
+The `@render` Blade directive accepts two arguments: the first is the view component's path or class name, the second is an extra set of properties (optional).
+
+You can choose between referincing the component via a path or a class name.
+
+```blade
+@render('myComponent')
+@render(App\Http\ViewComponents\MyComponent::class)
 ```
+
+Parameters will be injected in the view components `__construct` method. The component is instantiated with Laravel's container, so parameters that aren't provided by render will be automatically injected.
+
+```php
+use Illuminate\Http\Request;
+
+class MyComponent implements Htmlable
+{
+    public function __construct(Request $request, string $color)
+    {
+        $this->request = $request;
+        $this->color = $color;
+    }
+
+    // ...
+}
+```
+
+```blade
+@render('myComponent', ['color' => 'red'])
+```
+
+In the above example, `$color` is explicitly set, and a `$request` object will be injected by Laravel.
+
+### Configuration
+
+#### The root namespace
+
+By configuring `root_namespace`, you can define where the bulk of your view components are located. By default, this is in `App\Http\ViewComponents`.
+
+```
+app/
+  Http/
+    ViewComponents/
+      MyComponent.php
+      Nested/
+        NestedComponent.php
+```
+
+The above components can be rendered with `@render('myComponent')` and `@render('nested.nestedComponent')`.
+
+#### Additional namespaces
+
+You can register additional namespaces in the `namespaces` configuration, similar to view paths.
+
+``` php
+return [
+    'namespaces' => [
+        'navigation' => App\Services\Navigation::class,
+    ],
+];
+```
+
+```
+app/
+  Services/
+    Navigation/
+      Menu.php
+```
+
+The above `Menu` component can now be rendered with `@render('navigation::menu')`.
 
 ### Testing
 
