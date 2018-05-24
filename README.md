@@ -99,6 +99,41 @@ composer require spatie/laravel-view-components
 
 No additional setup necessary. Laravel will automatically discover and register the service provider.
 
+Optionally you can publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Spatie\ViewComponents\ViewComponentsServiceProvider" --tag="config"
+```
+
+This is the default content of the file that will be published at `config/view-components`:
+
+```php
+return [
+    /*
+     * The root namespace where components reside. Components can be referenced
+     * with camelCase & dot notation.
+     *
+     * Example: 'root_namespace' => App\Http\ViewComponents::class
+     *
+     * `@render('myComponent')
+     *     => `App\Http\ViewComponents\MyComponent`
+     */
+    'root_namespace' => 'App\Http\ViewComponents',
+
+    /*
+     * Register alternative namespaces here, similar to custom view paths.
+     *
+     * Example: 'navigation' => App\Services\Navigation::class,
+     *
+     * `@render('navigation::mainMenu')`
+     *     => `App\Services\Navigation\MainMenu`
+     */
+    'namespaces' => [
+        // 'navigation' => App\Services\Navigation::class,
+    ],
+];
+```
+
 ## Usage
 
 ### The `@render` directive

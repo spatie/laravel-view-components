@@ -10,7 +10,7 @@ return [
      * `@render('myComponent')
      *     => `App\Http\ViewComponents\MyComponent`
      */
-    'root_namespace' => App\Http\ViewComponents::class,
+    'root_namespace' => 'App\Http\ViewComponents',
 
     /*
      * Register alternative namespaces here, similar to custom view paths.
