@@ -2,10 +2,10 @@
 
 namespace Spatie\ViewComponents;
 
-use Illuminate\Contracts\Support\Htmlable;
+use InvalidArgumentException;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use InvalidArgumentException;
+use Illuminate\Contracts\Support\Htmlable;
 
 class ViewComponentsServiceProvider extends ServiceProvider
 {
@@ -16,11 +16,11 @@ class ViewComponentsServiceProvider extends ServiceProvider
 
             $componentClass = $this->app->make(ComponentFinder::class)->find($expressionParts[0]);
 
-            if (!class_exists($componentClass)) {
+            if (! class_exists($componentClass)) {
                 throw new InvalidArgumentException("View component [{$componentClass}] not found.");
             }
 
-            if (!array_key_exists(Htmlable::class, class_implements($componentClass))) {
+            if (! array_key_exists(Htmlable::class, class_implements($componentClass))) {
                 throw new InvalidArgumentException(
                     "View component [{$componentClass}] must implement Illuminate\Support\Htmlable."
                 );

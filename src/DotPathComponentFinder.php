@@ -49,7 +49,7 @@ final class DotPathComponentFinder implements ComponentFinder
     {
         $namespace = $this->namespaces[$alias] ?? null;
 
-        if (!$namespace) {
+        if (! $namespace) {
             throw new InvalidArgumentException("View component namespace [$alias] doesn't exist.");
         }
 

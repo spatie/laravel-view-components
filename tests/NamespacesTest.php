@@ -2,8 +2,8 @@
 
 namespace Spatie\ViewComponents\Tests;
 
-use Illuminate\Support\Facades\Blade;
 use InvalidArgumentException;
+use Illuminate\Support\Facades\Blade;
 
 class NamespacesTest extends TestCase
 {
