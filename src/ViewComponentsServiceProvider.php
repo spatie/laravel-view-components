@@ -2,34 +2,17 @@
 
 namespace Spatie\ViewComponents;
 
-use InvalidArgumentException;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Support\Htmlable;
 
 class ViewComponentsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Blade::directive('render', function ($expression) {
-            $expressionParts = explode(',', $expression, 2);
-
-            $componentClass = $this->app->make(ComponentFinder::class)->find($expressionParts[0]);
-
-            if (! class_exists($componentClass)) {
-                throw new InvalidArgumentException("View component [{$componentClass}] not found.");
-            }
-
-            if (! array_key_exists(Htmlable::class, class_implements($componentClass))) {
-                throw new InvalidArgumentException(
-                    "View component [{$componentClass}] must implement Illuminate\Support\Htmlable."
-                );
-            }
-
-            $props = trim($expressionParts[1] ?? '[]');
-
-            return "<?php echo app()->make({$componentClass}::class, {$props})->toHtml(); ?>";
-        });
+        Blade::directive(
+            'render',
+            $this->app->make(CompileRenderDirective::class)
+        );
     }
 
     public function register()
