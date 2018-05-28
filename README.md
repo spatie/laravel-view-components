@@ -39,7 +39,7 @@ class NavigationComponent implements Htmlable
 ```
 
 ```blade
-@render('navigation', ['backgroundColor' => 'black'])
+@render('navigationComponent', ['backgroundColor' => 'black'])
 ```
 
 A view component can be anything that implements Laravel's `Htmlable` contract, so you don't necessarily need to use Blade views to render the component. This is useful for wrapping third party HTML packages, like [spatie/laravel-menu](https://github.com/spatie/laravel-menu).
@@ -82,7 +82,7 @@ class MainMenuComponent implements Htmlable
 ```
 
 ```blade
-@render('mainMenu', ['class' => 'background-green'])
+@render('mainMenuComponent', ['class' => 'background-green'])
 ```
 
 The benefit over view composers is that data and rendering logic are explicitly tied together in components instead of being connected afterwards. They also allow you to seamlessly combine properties and dependency injection.
