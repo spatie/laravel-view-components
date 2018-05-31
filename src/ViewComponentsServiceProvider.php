@@ -20,7 +20,7 @@ class ViewComponentsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/view-components.php', 'view-components');
 
         $this->app->singleton(ComponentFinder::class, function () {
-            return new DotPathComponentFinder(
+            return new ComponentFinder(
                 $this->app->config->get('view-components.root_namespace'),
                 $this->app->config->get('view-components.namespaces')
             );
