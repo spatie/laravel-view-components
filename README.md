@@ -87,7 +87,7 @@ class MainMenuComponent implements Htmlable
 
 The benefit over view composers is that data and rendering logic are explicitly tied together in components instead of being connected afterwards. They also allow you to seamlessly combine properties and dependency injection.
 
-This package is based on *[Introducing View Components in Laravel, an alternative to View Composerss](https://laravel-news.com/introducing-view-components-on-laravel-an-alternative-to-view-composers)* by [Jeff Ochoa](https://twitter.com/@Jeffer_8a).
+This package is based on *[Introducing View Components in Laravel, an alternative to View Composers](https://laravel-news.com/introducing-view-components-on-laravel-an-alternative-to-view-composers)* by [Jeff Ochoa](https://twitter.com/@Jeffer_8a).
 
 ## Installation
 
