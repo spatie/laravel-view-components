@@ -9,6 +9,10 @@ class ViewComponentsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/../config/view-components.php' => config_path('view-components.php'),
+        ], 'config');
+
         Blade::directive(
             'render',
             $this->app->make(CompileRenderDirective::class)
