@@ -3,6 +3,7 @@
 namespace Spatie\ViewComponents;
 
 use InvalidArgumentException;
+use Illuminate\Contracts\Support\Htmlable;
 
 final class ComponentFinder
 {
@@ -22,9 +23,21 @@ final class ComponentFinder
     {
         $identifier = $this->sanitizeIdentifier($identifier);
 
-        return class_exists($identifier)
+        $componentClass = class_exists($identifier)
             ? $identifier
             : $this->expandComponentClassPath($identifier);
+
+        if (! class_exists($componentClass)) {
+            throw new InvalidArgumentException("View component [{$componentClass}] not found.");
+        }
+
+        if (! array_key_exists(Htmlable::class, class_implements($componentClass))) {
+            throw new InvalidArgumentException(
+                "View component [{$componentClass}] must implement Illuminate\Support\Htmlable."
+            );
+        }
+
+        return "{$componentClass}::class";
     }
 
     private function expandComponentClassPath(string $path): string

@@ -3,7 +3,8 @@
 namespace Spatie\ViewComponents\Tests;
 
 use InvalidArgumentException;
-use Illuminate\Support\Facades\Blade;
+use Spatie\ViewComponents\ComponentFinder;
+use Spatie\ViewComponents\Tests\Stubs\NonHtmlable;
 
 class ComponentValidationTest extends TestCase
 {
@@ -13,7 +14,7 @@ class ComponentValidationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("View component [App\Http\ViewComponents\DoesNotExist] not found.");
 
-        Blade::compileString("@render('doesNotExist')");
+        $this->app->make(ComponentFinder::class)->find('doesNotExist');
     }
 
     /** @test */
@@ -24,6 +25,6 @@ class ComponentValidationTest extends TestCase
             "View component [Spatie\ViewComponents\Tests\Stubs\NonHtmlable] must implement Illuminate\Support\Htmlable."
         );
 
-        Blade::compileString("@render(Spatie\ViewComponents\Tests\Stubs\NonHtmlable::class)");
+        $this->app->make(ComponentFinder::class)->find(NonHtmlable::class);
     }
 }

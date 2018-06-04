@@ -2,6 +2,10 @@
 
 namespace Spatie\ViewComponents\Tests;
 
+use Spatie\ViewComponents\ComponentFinder;
+use Spatie\ViewComponents\Tests\Stubs\MyComponent;
+use Spatie\ViewComponents\Tests\Stubs\Nested\NestedComponent;
+
 class RootNamespaceTest extends TestCase
 {
     protected function getEnvironmentSetUp($app)
@@ -15,18 +19,18 @@ class RootNamespaceTest extends TestCase
     /** @test */
     public function it_renders_a_component_from_a_path()
     {
-        $this->assertBladeCompilesTo(
-            '<?php echo app()->make(Spatie\ViewComponents\Tests\Stubs\MyComponent::class, [])->toHtml(); ?>',
-            "@render('myComponent')"
+        $this->assertEquals(
+            MyComponent::class.'::class',
+            $this->app->make(ComponentFinder::class)->find('myComponent')
         );
     }
 
     /** @test */
     public function it_renders_a_component_from_a_nested_path()
     {
-        $this->assertBladeCompilesTo(
-            '<?php echo app()->make(Spatie\ViewComponents\Tests\Stubs\Nested\NestedComponent::class, [])->toHtml(); ?>',
-            "@render('nested.nestedComponent')"
+        $this->assertEquals(
+            NestedComponent::class.'::class',
+            $this->app->make(ComponentFinder::class)->find('nested.nestedComponent')
         );
     }
 
@@ -34,7 +38,7 @@ class RootNamespaceTest extends TestCase
     public function it_renders_a_component_from_a_path_with_props()
     {
         $this->assertBladeCompilesTo(
-            "<?php echo app()->make(Spatie\ViewComponents\Tests\Stubs\MyComponent::class, ['color' => 'red'])->toHtml(); ?>",
+            "<?php echo app(app(Spatie\ViewComponents\ComponentFinder::class)->find('myComponent'), ['color' => 'red'])->toHtml(); ?>",
             "@render('myComponent', ['color' => 'red'])"
         );
     }
