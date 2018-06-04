@@ -20,7 +20,7 @@ class RootNamespaceTest extends TestCase
     public function it_renders_a_component_from_a_path()
     {
         $this->assertEquals(
-            MyComponent::class.'::class',
+            MyComponent::class,
             $this->app->make(ComponentFinder::class)->find('myComponent')
         );
     }
@@ -29,7 +29,7 @@ class RootNamespaceTest extends TestCase
     public function it_renders_a_component_from_a_nested_path()
     {
         $this->assertEquals(
-            NestedComponent::class.'::class',
+            NestedComponent::class,
             $this->app->make(ComponentFinder::class)->find('nested.nestedComponent')
         );
     }

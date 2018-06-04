@@ -37,7 +37,7 @@ final class ComponentFinder
             );
         }
 
-        return "{$componentClass}::class";
+        return $componentClass;
     }
 
     private function expandComponentClassPath(string $path): string

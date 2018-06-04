@@ -20,7 +20,7 @@ class NamespacesTest extends TestCase
     public function it_renders_a_component_from_a_path_with_an_explicit_namespace()
     {
         $this->assertEquals(
-            MyComponent::class.'::class',
+            MyComponent::class,
             $this->app->make(ComponentFinder::class)->find('stubs::myComponent')
         );
     }
