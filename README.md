@@ -140,7 +140,7 @@ return [
 
 The `@render` Blade directive accepts two arguments: the first is the view component's path or class name, the second is an extra set of properties (optional).
 
-You can choose between referincing the component via a path or a class name.
+You can choose between referencing the component via a path or a class name.
 
 ```blade
 @render('myComponent')
