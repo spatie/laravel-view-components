@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-view-components` will be documented in this file
 
+## 1.1.2 - 2018-09-04
+- Add support for Laravel 5.7
+
 ## 1.1.1 - 2018-06-04
 - Fixed regression introduced in 1.1.0
 
