@@ -2,7 +2,10 @@
 
 All notable changes to `laravel-view-components` will be documented in this file
 
-## 1.1.3 - 2018-02-27
+## 1.2.0 - 2019-09-03
+- Add support for Laravel 6.0
+
+## 1.1.3 - 2019-02-27
 - Add support for Laravel 5.8
 
 ## 1.1.2 - 2018-09-04
