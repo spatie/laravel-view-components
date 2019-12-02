@@ -19,6 +19,7 @@ final class CompileRenderDirective
         $componentPath = $expressionParts[0];
         $props = trim($expressionParts[1] ?? '[]');
 
-        return "<?php echo app(app(Spatie\ViewComponents\ComponentFinder::class)->find({$componentPath}), {$props})->toHtml(); ?>";
+        return "<?php echo app(app(Spatie\ViewComponents\ComponentFinder::class)->find({$componentPath}), ".
+            "{$props})->toHtml(); ?>";
     }
 }
