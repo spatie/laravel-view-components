@@ -4,14 +4,6 @@ namespace Spatie\ViewComponents;
 
 final class CompileRenderDirective
 {
-    /** @var \Spatie\ViewComponents\ComponentFinder */
-    private $componentFinder;
-
-    public function __construct(ComponentFinder $componentFinder)
-    {
-        $this->componentFinder = $componentFinder;
-    }
-
     public function __invoke(string $expression): string
     {
         $expressionParts = explode(',', $expression, 2);
