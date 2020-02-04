@@ -2,8 +2,8 @@
 
 namespace Spatie\ViewComponents;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class ViewComponentsServiceProvider extends ServiceProvider
 {
@@ -13,10 +13,9 @@ class ViewComponentsServiceProvider extends ServiceProvider
             __DIR__.'/../config/view-components.php' => config_path('view-components.php'),
         ], 'config');
 
-        Blade::directive(
-            'render',
-            $this->app->make(CompileRenderDirective::class)
-        );
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+            $bladeCompiler->directive('render', $this->app->make(CompileRenderDirective::class));
+        });
     }
 
     public function register()
