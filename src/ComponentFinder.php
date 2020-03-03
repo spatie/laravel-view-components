@@ -2,9 +2,9 @@
 
 namespace Spatie\ViewComponents;
 
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use Illuminate\Contracts\Support\Htmlable;
 
 final class ComponentFinder
 {
@@ -44,7 +44,7 @@ final class ComponentFinder
     private function expandComponentClassPath(string $path): string
     {
         if (Str::contains($path, '::')) {
-            list($namespaceAlias, $path) = explode('::', $path, 2);
+            [$namespaceAlias, $path] = explode('::', $path, 2);
         }
 
         $namespace = isset($namespaceAlias)
