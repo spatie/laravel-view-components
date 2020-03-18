@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-view-components` will be documented in this file
 
+## 1.3.1 - 2020-03-18
+- make sure the render directive always gets registered (#22)
+
 ## 1.3.0 - 2020-03-03
 - Add support for Laravel 7
 
