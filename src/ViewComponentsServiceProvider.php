@@ -13,7 +13,7 @@ class ViewComponentsServiceProvider extends ServiceProvider
             __DIR__.'/../config/view-components.php' => config_path('view-components.php'),
         ], 'config');
 
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+        $this->callAfterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
             $bladeCompiler->directive('render', $this->app->make(CompileRenderDirective::class));
         });
     }
