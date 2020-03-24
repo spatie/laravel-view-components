@@ -1,3 +1,5 @@
+**THIS PACKAGE HAS BEEN ABANDONED**
+
 # A better way to connect data with view rendering in Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-view-components.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-view-components)
